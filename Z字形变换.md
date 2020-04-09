@@ -2,8 +2,8 @@ class Solution {
     public String convert(String s, int numRows) {
         if(numRows == 1) return s;//行数为1时，直接输出原字符串
         String[] arr = new String[numRows];//定义一个一维字符串数组把结果按行储存
-        Arrays.fill(arr,"");//将arr字符串中的每个值设为""
-        char[] chars = s.toCharArray();//将原字符串转换为字符数组
+        Arrays.fill(arr,"");//将arr字符串中的每个值设为"",如果不设初值，则访问时会出现null字符串，例nullPAHNnullAPLSIIGnullYIR(画图可知)
+        char[] chars = s.toCharArray();//将原字符串转换为字符数组                                
         int len = chars.length;//得到源字符串的长度,也可用s.length();
         int period = numRows * 2 - 2;//定义指针，找到储存规律，存储周期为(2 * numRows - 2)
         for(int i = 0; i < len; i++){//遍历字符串（字符数组）
