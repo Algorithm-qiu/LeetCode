@@ -1,0 +1,40 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        if(nums == null || n == 0) return 0;
+        int left = 0;
+        int right = n - 1;
+        while(left < right){
+            int mid = left + (right - left)/2;
+            if(nums[mid] < target){
+                left = mid + 1;
+            }else{
+                right = mid;
+            }
+        }
+        int res = 0;
+        while((left <= n - 1) && (left >= 0) && (nums[left] == target)){//在前面的条件要是后面的前提条件，否则nums[left]中的left未经判断会导致数组越界
+            res++;
+            left++;
+        }
+        return res;
+    }
+}
+
+if(nums[mid] < target){
+left = mid + 1;
+}else{
+right = mid;
+}//要将与目标值相同的mid归到左区间，这样最后取到的mid才是数组中第一个出现的与目标值相同的mid
+//也可以写成
+if(nums[mid] >= target){
+right = mid;
+}else{
+left = mid + 1;
+}//但不能写成
+if(nums[mid] > target){
+right = mid;
+}else{
+left = mid + 1;
+}//这样遇到与目标值相同的，区间却一直往右移，最后取到最右边的与目标值相同的mid
+
